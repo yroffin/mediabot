@@ -1,0 +1,4 @@
+mediabot
+========
+
+Some media organizer
