@@ -4,4 +4,11 @@
   <artifactId>mediabot-core</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+  <modules>
+  	<module>mediabot-provider-javafx</module>
+  	<module>mediabot-application</module>
+  	<module>mediabot-model</module>
+  	<module>mediabot-business</module>
+  	<module>mediabot-utils</module>
+  </modules>
 </project>
