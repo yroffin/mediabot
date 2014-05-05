@@ -1,9 +1,36 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>mediabot</groupId>
-    <artifactId>mediabot-core</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>mediabot-provider-javafx</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>mediabot</groupId>
+		<artifactId>mediabot-core</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>mediabot-provider-javafx</artifactId>
+
+	<dependencies>
+		<!-- internal dependencies -->
+		<dependency>
+			<groupId>mediabot</groupId>
+			<artifactId>mediabot-application</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mediabot</groupId>
+			<artifactId>mediabot-business</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mediabot</groupId>
+			<artifactId>mediabot-model</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mediabot</groupId>
+			<artifactId>mediabot-utils</artifactId>
+		</dependency>
+		<!-- javafx -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>javafx</artifactId>
+		</dependency>
+	</dependencies>
+
 </project>
