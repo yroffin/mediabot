@@ -21,4 +21,10 @@ public interface INode {
 	 * @return
 	 */
 	public boolean isLoaded();
+
+	/**
+	 * has children
+	 * @return
+	 */
+	public boolean hasChildren();
 }

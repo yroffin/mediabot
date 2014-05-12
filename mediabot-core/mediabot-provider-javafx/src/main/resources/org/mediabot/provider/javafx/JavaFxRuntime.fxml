@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.mediabot.provider.javafx.JavaFxRuntime">
-<children><Button layoutX="430.0" layoutY="30.0" mnemonicParsing="false" text="Button" /><TreeView fx:id="treeFilesystems" layoutX="23.0" layoutY="14.0" prefHeight="373.0" prefWidth="286.0" /><Canvas height="540.0" layoutX="-32.0" layoutY="-22.0" width="825.0" />
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.mediabot.provider.javafx.controller.JavaFxRuntimeCtrl">
+<children><Button layoutX="430.0" layoutY="30.0" mnemonicParsing="false" text="Button" /><TreeView fx:id="treeFilesystems" layoutX="23.0" layoutY="14.0" prefHeight="373.0" prefWidth="286.0" />
 </children></Pane>
