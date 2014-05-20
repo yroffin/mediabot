@@ -26,10 +26,28 @@
 			<groupId>mediabot</groupId>
 			<artifactId>mediabot-utils</artifactId>
 		</dependency>
+		<!-- spring -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
 		<!-- javafx -->
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>javafx</artifactId>
+		</dependency>
+		<!-- logger -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
 		</dependency>
 	</dependencies>
 

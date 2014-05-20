@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.mediabot.provider.javafx.presenter.impl.MainPresenterImpl">
+
+    <!-- Header -->
+    <top>
+        <VBox spacing="5">
+            <styleClass><String fx:value="header" /></styleClass>
+            <children>
+                <Label text="Mediabot">
+                    <styleClass>
+                        <String fx:value="label" />
+                        <String fx:value="title" />
+                    </styleClass>
+                </Label>
+                <Label text="JavaFX 2.0 Mediabot MVP">
+                    <styleClass>
+                        <String fx:value="label" />
+                        <String fx:value="tag-line" />
+                    </styleClass>
+                </Label>
+            </children>
+        </VBox>
+    </top>
+
+    <!-- Content Area -->
+    <center>
+        <BorderPane fx:id="contentArea">
+            <styleClass><String fx:value="body" /></styleClass>
+        </BorderPane>
+    </center>
+
+</BorderPane>

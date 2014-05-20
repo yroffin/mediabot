@@ -4,6 +4,6 @@ import java.util.Map;
 
 import org.mediabot.model.storage.INode;
 
-public interface INodeStorage {
+public interface Directory {
 	public Map<String, INode> findNodes();
 }

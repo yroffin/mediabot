@@ -66,12 +66,23 @@ public class NodeStorage implements INode {
 	}
 
 	@Override
-	public String toString() {
-		if (file.getName().length() == 0) {
-			return file.getAbsolutePath();
-		} else {
-			return file.getName();
-		}
+	public String getName() {
+		if(file != null) return file.getName();
+		return "N/A";
 	}
 
+	@Override
+	public boolean isDirectory() {
+		return file.isDirectory();
+	}
+
+	@Override
+	public boolean isFile() {
+		return file.isFile();
+	}
+
+	@Override
+	public String toString() {
+		return "NodeStorage [file=" + file + ", loaded=" + loaded + "]";
+	}
 }

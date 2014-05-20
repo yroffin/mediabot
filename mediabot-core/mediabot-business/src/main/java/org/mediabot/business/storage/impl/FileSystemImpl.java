@@ -2,9 +2,9 @@ package org.mediabot.business.storage.impl;
 
 import java.io.File;
 
-import org.mediabot.business.storage.IFileSystem;
+import org.mediabot.business.storage.FileSystem;
 
-public class FileSystem implements IFileSystem {
+public class FileSystemImpl implements FileSystem {
 
 	@Override
 	public File[] listRoots() {

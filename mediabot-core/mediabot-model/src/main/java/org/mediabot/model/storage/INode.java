@@ -11,6 +11,12 @@ public interface INode {
 	public File getFile();
 	
 	/**
+	 * get name
+	 * @return
+	 */
+	public String getName();
+
+	/**
 	 * get children
 	 * @return
 	 */
@@ -27,4 +33,16 @@ public interface INode {
 	 * @return
 	 */
 	public boolean hasChildren();
+
+	/**
+	 * is node a directory
+	 * @return
+	 */
+	public boolean isDirectory();
+
+	/**
+	 * is node a file
+	 * @return
+	 */
+	public boolean isFile();
 }
