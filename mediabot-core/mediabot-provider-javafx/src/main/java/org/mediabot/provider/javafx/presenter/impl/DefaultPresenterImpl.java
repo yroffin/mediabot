@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.mediabot.application.storage.DirectoryService;
+import org.mediabot.application.summer.FileSummerService;
 import org.mediabot.model.storage.INode;
 import org.mediabot.provider.javafx.node.LazyTreeItemView;
 import org.mediabot.provider.javafx.node.TableNodeView;
@@ -15,6 +16,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeItem;
@@ -27,8 +29,7 @@ import org.slf4j.LoggerFactory;
 public class DefaultPresenterImpl extends AbstractPresenterImpl implements
 		Presenter {
 
-	private static final Logger log = LoggerFactory
-			.getLogger(DefaultPresenterImpl.class);
+	private static final Logger log = LoggerFactory.getLogger(DefaultPresenterImpl.class);
 
 	@FXML
 	TreeView<String> treeView;
@@ -36,9 +37,18 @@ public class DefaultPresenterImpl extends AbstractPresenterImpl implements
 	TableView<TableNodeView> tableView;
 	@FXML
 	TableColumn<TableNodeView, String> nameTableView;
+	@FXML
+	Label labelSelection;
 
 	@Autowired
 	private DirectoryService directoryService;
+	@Autowired
+	private FileSummerService fileSummerService;
+
+	/**
+	 * internal fields
+	 */
+	private INode nodeSelection;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -80,23 +90,17 @@ public class DefaultPresenterImpl extends AbstractPresenterImpl implements
 		/**
 		 * table view
 		 */
-		TableColumn<TableNodeView, String> columnName = new TableColumn<TableNodeView, String>(
-				"Nom");
-		columnName
-				.setCellValueFactory(new PropertyValueFactory<TableNodeView, String>(
-						"name"));
-		TableColumn<TableNodeView, String> columnLastModified = new TableColumn<TableNodeView, String>(
-				"Modifié le");
-		columnLastModified
-				.setCellValueFactory(new PropertyValueFactory<TableNodeView, String>(
-						"lastModified"));
-		TableColumn<TableNodeView, String> columnType = new TableColumn<TableNodeView, String>(
-				"Type");
-		columnType
-				.setCellValueFactory(new PropertyValueFactory<TableNodeView, String>(
-						"type"));
-		tableView.getColumns().addAll(columnName, columnLastModified,
-				columnType);
+		tableView.getColumns().addAll(
+				buildColumn("Nom","name"),
+				buildColumn("Modifié le","lastModified"),
+				buildColumn("Type","type"),
+				buildColumn("Taille","length"));
+	}
+
+	private TableColumn<TableNodeView, String> buildColumn(String libelle, String field) {
+		TableColumn<TableNodeView, String> columnName = new TableColumn<TableNodeView, String>(libelle);
+		columnName.setCellValueFactory(new PropertyValueFactory<TableNodeView, String>(field));
+		return columnName;
 	}
 
 	@Override
@@ -109,9 +113,16 @@ public class DefaultPresenterImpl extends AbstractPresenterImpl implements
 			if (node.isDirectory()) {
 				log.info("Target: {} - select node item", target);
 				for (INode item : node.getChildrens()) {
-					data.add(new TableNodeView(item));
+					if(item.isFile()) {
+						data.add(new TableNodeView(item));
+					}
 				}
 				tableView.setItems(data);
+				/**
+				 * set current selection
+				 */
+				labelSelection.setText(node.getFile().getAbsolutePath());
+				nodeSelection = node;
 			}
 		}
 	}
@@ -133,5 +144,10 @@ public class DefaultPresenterImpl extends AbstractPresenterImpl implements
 				}
 			}
 		}
+	}
+	
+	@FXML
+	public void onFindDuplicate() throws InterruptedException {
+		fileSummerService.analyze(nodeSelection);
 	}
 }

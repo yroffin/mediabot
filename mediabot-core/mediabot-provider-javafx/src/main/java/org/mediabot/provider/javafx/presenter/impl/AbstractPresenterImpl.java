@@ -33,9 +33,15 @@ public abstract class AbstractPresenterImpl implements Presenter {
 		postConstruct();
 	}
 
+	/**
+	 * post construct handler for this presenter
+	 */
 	public void postConstruct() {
 	}
 
+	/**
+	 * get associated view
+	 */
 	public Node getView() {
 		return root;
 	}

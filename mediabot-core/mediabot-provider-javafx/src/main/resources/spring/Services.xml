@@ -7,6 +7,12 @@
 
 	<context:annotation-config />
 
+	<bean id="fileSummerService" class="org.mediabot.application.summer.impl.FileSummerServiceImpl">
+	</bean>
+
+	<bean id="fileSummer" class="org.mediabot.business.analyze.impl.FileSummerImpl">
+	</bean>
+
 	<bean id="directoryService" class="org.mediabot.application.storage.impl.DirectoryServiceImpl">
 	</bean>
 

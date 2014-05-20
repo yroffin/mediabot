@@ -29,7 +29,9 @@ public class NodeStorageHelperTest {
 		
 		Mockito.when(fileSystem.listRoots()).thenReturn(roots);
 
-		Map<String, INode> nodes = (new DirectoryImpl()).findNodes();
+		DirectoryImpl impl = new DirectoryImpl();
+		impl.fileSystem = fileSystem;
+		Map<String, INode> nodes = (impl).findNodes();
 		Assert.assertEquals("", nodes.get("X:\\").getFile().getName());
 		Assert.assertEquals("", nodes.get("Y:\\").getFile().getName());
 	}
@@ -42,7 +44,9 @@ public class NodeStorageHelperTest {
 		
 		Mockito.when(fileSystem.listRoots()).thenReturn(roots);
 
-		Map<String, INode> nodes = (new DirectoryImpl()).findNodes();
+		DirectoryImpl impl = new DirectoryImpl();
+		impl.fileSystem = fileSystem;
+		Map<String, INode> nodes = (impl).findNodes();
 		Assert.assertEquals("org", ((INode) nodes.values().toArray()[0]).getChildrens().get(0).getFile().getName());
 		Assert.assertEquals("mediabot", ((INode) nodes.values().toArray()[0]).getChildrens().get(0).getChildrens().get(0).getFile().getName());
 	}
