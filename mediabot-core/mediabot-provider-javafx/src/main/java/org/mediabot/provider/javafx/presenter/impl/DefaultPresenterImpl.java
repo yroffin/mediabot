@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -39,6 +40,8 @@ public class DefaultPresenterImpl extends AbstractPresenterImpl implements
 	TableColumn<TableNodeView, String> nameTableView;
 	@FXML
 	Label labelSelection;
+	@FXML
+	TextField fileRenamer;
 
 	@Autowired
 	private DirectoryService directoryService;
@@ -95,6 +98,10 @@ public class DefaultPresenterImpl extends AbstractPresenterImpl implements
 				buildColumn("Modifié le","lastModified"),
 				buildColumn("Type","type"),
 				buildColumn("Taille","length"));
+		/**
+		 * Textfield
+		 */
+		fileRenamer.setText("$node.getYear()/$node.getWeek()/$node.getName()");
 	}
 
 	private TableColumn<TableNodeView, String> buildColumn(String libelle, String field) {
@@ -147,7 +154,8 @@ public class DefaultPresenterImpl extends AbstractPresenterImpl implements
 	}
 	
 	@FXML
-	public void onFindDuplicate() throws InterruptedException {
-		fileSummerService.analyze(nodeSelection);
+	public void onFindDuplicate() throws Exception {
+		String output = nodeSelection.getFile().getAbsolutePath() + ".sort";
+		fileSummerService.analyze(nodeSelection, output, fileRenamer.getText());
 	}
 }

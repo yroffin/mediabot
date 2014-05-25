@@ -45,4 +45,34 @@ public interface INode {
 	 * @return
 	 */
 	public boolean isFile();
+
+	/**
+	 * set md5sum
+	 * @param md5
+	 */
+	public void setMd5(String md5);
+
+	/**
+	 * get md5
+	 * @return
+	 */
+	public String getMd5();
+
+	/**
+	 * get week
+	 * @return
+	 */
+	public String getWeek();
+
+	/**
+	 * get year
+	 * @return
+	 */
+	public String getYear();
+
+	/**
+	 * rename it
+	 * @param render
+	 */
+	public void renameTo(String render);
 }

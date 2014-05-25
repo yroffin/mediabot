@@ -4,6 +4,13 @@ import org.mediabot.model.storage.INode;
 
 public interface FileSummerService {
 
-	void analyze(INode root) throws InterruptedException;
+	/**
+	 * analyze and rename directory
+	 * @param root
+	 * @param renamer
+	 * @throws InterruptedException
+	 * @throws Exception 
+	 */
+	void analyze(INode root, String workDir, String renamer) throws InterruptedException, Exception;
 
 }

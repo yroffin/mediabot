@@ -2,7 +2,7 @@ package org.mediabot.business.analyze.impl;
 
 import java.util.concurrent.BlockingQueue;
 
-public abstract class Producer<T> implements Runnable {
+public abstract class Producer<T> extends NotifyingThread implements Runnable {
 
 	protected final BlockingQueue<T> sharedQueue;
 

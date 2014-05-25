@@ -2,6 +2,8 @@ package org.mediabot.model.storage.impl;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.mediabot.model.storage.INode;
@@ -16,6 +18,8 @@ public class NodeStorage implements INode {
 	private List<INode> childrens = new ArrayList<INode>();
 	private File file = null;
 	private boolean loaded = false;
+	private String md5;
+	private Calendar lastModified = null;
 
 	/**
 	 * constructor
@@ -23,6 +27,14 @@ public class NodeStorage implements INode {
 	 */
 	public NodeStorage(File file) {
 		this.file = file;
+	}
+
+	public Calendar getLastModified() {
+		if(lastModified == null) {
+			lastModified = Calendar.getInstance();
+			lastModified.setTime(new Date(getFile().lastModified()));
+		}
+		return lastModified;
 	}
 
 	@Override
@@ -79,6 +91,33 @@ public class NodeStorage implements INode {
 	@Override
 	public boolean isFile() {
 		return file.isFile();
+	}
+
+	@Override
+	synchronized public String getMd5() {
+		return md5;
+	}
+
+	@Override
+	synchronized public void setMd5(String md5) {
+		this.md5 = md5;
+	}
+
+	@Override
+	public String getWeek() {
+		return getLastModified().get(Calendar.WEEK_OF_YEAR)+"";
+	}
+
+	@Override
+	public String getYear() {
+		return getLastModified().get(Calendar.YEAR)+"";
+	}
+
+	@Override
+	public void renameTo(String dest) {
+		File destFile = new File(dest);
+		destFile.getParentFile().mkdirs();
+		file.renameTo(destFile);
 	}
 
 	@Override
