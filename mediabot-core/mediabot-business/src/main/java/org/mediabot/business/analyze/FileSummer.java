@@ -1,5 +1,6 @@
 package org.mediabot.business.analyze;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -24,5 +25,5 @@ public interface FileSummer {
 	 * @param template, the template builder
 	 * @throws Exception 
 	 */
-	void rename(Map<String, List<INode>> index, String data, TemplateRender template) throws Exception;
+	void rename(Map<String, List<INode>> index, File root, String data, TemplateRender template) throws Exception;
 }

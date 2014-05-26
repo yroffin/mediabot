@@ -26,9 +26,21 @@ public class NodeStorage implements INode {
 	 * @param file
 	 */
 	public NodeStorage(File file) {
+		initialize(file);
+	}
+	
+	/**
+	 * pseudo constructor
+	 * @param file
+	 */
+	public void initialize(File file) {
 		this.file = file;
 	}
 
+	/**
+	 * get last modified
+	 * @return
+	 */
 	public Calendar getLastModified() {
 		if(lastModified == null) {
 			lastModified = Calendar.getInstance();
@@ -114,10 +126,10 @@ public class NodeStorage implements INode {
 	}
 
 	@Override
-	public void renameTo(String dest) {
-		File destFile = new File(dest);
+	public void renameTo(File root, String dest) {
+		File destFile = new File(root.getAbsoluteFile() + File.separator + dest);
 		destFile.getParentFile().mkdirs();
-		file.renameTo(destFile);
+		getFile().renameTo(destFile);
 	}
 
 	@Override

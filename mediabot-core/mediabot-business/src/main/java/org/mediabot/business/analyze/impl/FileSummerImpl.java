@@ -1,5 +1,6 @@
 package org.mediabot.business.analyze.impl;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +26,7 @@ public class FileSummerImpl implements FileSummer {
 	}
 
 	@Override
-	public void rename(Map<String, List<INode>> index, String data, TemplateRender template) throws Exception {
+	public void rename(Map<String, List<INode>> index, File root, String data, TemplateRender template) throws Exception {
 		log.info("Rename {} index(es)", index.size());
 		for(Entry<String, List<INode>> entry : index.entrySet()) {
 			int i = 0;
@@ -36,7 +37,7 @@ public class FileSummerImpl implements FileSummer {
 					if(log.isInfoEnabled()) {
 						log.info("Rename {} to {}", node, template.render(data, ctx));
 					}
-					node.renameTo(template.render(data, ctx ));
+					node.renameTo(root, template.render(data, ctx ));
 				} else {
 					log.info("Reject {}", node);
 				}

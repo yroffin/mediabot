@@ -1,5 +1,6 @@
 package org.mediabot.application.summer.impl;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,6 @@ public class FileSummerServiceImpl implements FileSummerService {
 	public void analyze(INode root, String workDir, String renamer) throws Exception {
 		log.info("Analyze {}", root.getName());
 		Map<String, List<INode>> index = fileSummer.analyze(root);
-		fileSummer.rename(index, renamer, template);
+		fileSummer.rename(index, new File(workDir), renamer, template);
 	}
 }

@@ -74,5 +74,5 @@ public interface INode {
 	 * rename it
 	 * @param render
 	 */
-	public void renameTo(String render);
+	public void renameTo(File root, String render);
 }
